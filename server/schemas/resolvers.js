@@ -22,7 +22,7 @@ const resolvers = {
 
             const correctPw = await user.isCorrectPassword(password);
 
-            if (!correctPassword) {
+            if (!correctPw) {
                 throw new AuthenticationError("Incorrect credentials");
             }
 
@@ -47,6 +47,7 @@ const resolvers = {
         },
 
         removeBook: async (parent, { bookId }, context) => {
+            console.log(context.user._id);
             const updatedUser = await User.fundOneAndUpdate(
                 { _id: context.user._id },
                 { $pull: { savedBooks: { bookId: bookId } } }

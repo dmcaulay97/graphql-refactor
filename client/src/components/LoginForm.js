@@ -22,11 +22,13 @@ const LoginForm = () => {
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
+    console.log(form.checkValidity(), form.checkValidity() === false)
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
 
+    console.log(userFormData);
     try {
       const { data } = await loginUser({
         variables: { ...userFormData }
@@ -38,7 +40,7 @@ const LoginForm = () => {
         throw new Error('something went wrong!');
       }
 
-      Auth.login(data.loginUser.token);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
