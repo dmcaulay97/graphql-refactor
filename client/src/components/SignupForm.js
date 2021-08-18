@@ -31,7 +31,6 @@ const SignupForm = () => {
     }
 
     try {
-      console.log(userFormData)
       const { signUpData } = addUser({
         variables: userFormData
       });
