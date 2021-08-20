@@ -38,6 +38,7 @@ const SavedBooks = () => {
       // setUserData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
+      window.location.reload();
 
     } catch (err) {
       console.error(err);
@@ -45,7 +46,6 @@ const SavedBooks = () => {
   };
 
   // if data isn't here yet, say so
-  console.log(loading);
   if (loading) {
     return <h2>LOADING...</h2>;
   }
